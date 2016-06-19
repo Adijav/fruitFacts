@@ -1,0 +1,35 @@
+body {
+	font-family: 'Nunito', sans-serif;
+}
+
+.fruitDetails {
+	font-size: 150%;
+}
+
+.fruitContainer {
+	border-radius: 10px;
+}
+
+.fruitImage {
+	width: 100%;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.description {
+	text-align: justify;
+}
+
+.legendButton {
+	margin-bottom: 10px;
+}
+
+.quizOptions h4{
+	padding: 10px 15px;
+	border-radius: 10px;
+	border: 1px solid #bbb;
+}
+
+.quizOptions h4:hover {
+	cursor: pointer;
+};

@@ -1,0 +1,51 @@
+<div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-8">
+			<h4>Results:</h4>
+			<div class="btn-toolbar">
+				<button class="btn" 
+					ng-repeat="question in DataService.quizQuestions" 
+					ng-class="{'btn-success': question.correct,'btn-danger': !question.correct}" ng-click="setActiveQuestion($index)"><i class="glyphicon" ng-class="{'glyphicon-ok':question.correct,'glyphicon-remove':!question.correct}"></i>
+				</button>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h4>Legend:</h4>
+			<div class="legendButton">
+				<button class="btn btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+				<span>Correct</span>
+			</div>
+			<div class="legendButton">
+				<button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+				<span>Incorrect</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>You Scored {{QuizMetrics.numCorrect}}/{{DataService.quizQuestions.length}}</h3>
+			<h3><strong>{{QuizMetrics.numCorrect/DataService.quizQuestions.length*100}}%</strong></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="well well-sm" ng-hide="finalise">
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>{{activeQuestion+1 + ". " + DataService.quizQuestions[activeQuestion].question}} ?</h4>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 quizOptions" ng-repeat="option in DataService.quizQuestions[activeQuestion].options">
+							<h4 ng-class="getAnswerClass($index)">
+								{{option}}
+								<span class="pull-right" ng-show="$index !== QuizMetrics.correctAnswers[activeQuestion] && $index === DataService.quizQuestions[activeQuestion].selected">Selected Answer</span>
+								<span class="pull-right" ng-show="$index === QuizMetrics.correctAnswers[activeQuestion]">Correct Answer</span>
+							</h4>
+						</div>
+						<div class="col-xs-12">
+							<button class="btn btn-primary" ng-click="resetVariables()">Back to Facts</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
